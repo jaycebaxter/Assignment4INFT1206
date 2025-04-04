@@ -19,7 +19,7 @@ function randomRGB() {
 }
 
 
-class Ball {
+class Ball extends Shape{
     constructor(x, y, velX, velY, color, size) {
       this.x = x;
       this.y = y;
@@ -115,5 +115,27 @@ function loop() {
   }
   
   
+class Shape {
+
+  constructor(x, y, velX, velY) {
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   loop();
