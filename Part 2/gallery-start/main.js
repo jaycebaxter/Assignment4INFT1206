@@ -18,20 +18,40 @@ const alts = {
 
 }
 
+// Automatically loads the first image because it wasn't doing it for some reason
+// Probably because I renamed stuff
+displayedImage.src = `images/${immies[0]}`;
+displayedImage.alt = alts[immies[0]];
+
 /* Looping through images */
 
-immies.forEach {
-
+immies.forEach (image => {
+    
     const newImage = document.createElement('img');
     newImage.setAttribute('src', `images/${image}`);
     newImage.setAttribute('alt', alts[image]);
     thumbBar.appendChild(newImage);
 
-    newImage.addEventListener('click', function(clickPic) {
+    newImage.addEventListener('click', clickPic => {
         displayedImage.src = clickPic.target.src;
         displayedImage.alt = clickPic.target.alt;
     });
+})
 
-}
+
 
 /* Wiring up the Darken/Lighten button */
+
+btn.addEventListener('click', () => {
+    let buttonClass = btn.getAttribute('class');
+
+    if (buttonClass === 'dark') {
+        btn.setAttribute('class', 'light');
+        btn.textContent = 'Light Mode';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.3)';
+    } else {
+        btn.setAttribute('class', 'dark');
+        btn.textContent = 'Dark Mode';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0)';
+    }
+});
